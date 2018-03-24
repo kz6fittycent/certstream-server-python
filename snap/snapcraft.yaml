@@ -8,7 +8,7 @@ grade: stable
 
 apps:
   certstream-server:
-    command: $SNAP/bin/run_server.py
+    command: $SNAP/usr/bin/run_server.py
     plugs:
       - home
       - network
