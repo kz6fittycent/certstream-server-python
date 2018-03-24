@@ -7,7 +7,7 @@ confinement: strict # use 'strict' once you have the right plugs
 
 apps:
   certstream-server:
-    command: run_server.py
+    command: $SNAP/python run_server.py  
     plugs:
       - home
       - network
@@ -18,7 +18,7 @@ parts:
     source: https://github.com/kz6fittycent/certstream-server-python
     source-type: git
     plugin: python3
-    
+    requirements: requirements.txt
     build-packages:
       - python3
       
