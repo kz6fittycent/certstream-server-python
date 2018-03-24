@@ -7,7 +7,7 @@ confinement: strict # use 'strict' once you have the right plugs
 
 apps:
   certstream-server:
-    command: usr/bin/python3 $SNAP run_server.py  
+    command: usr/bin/python $SNAP run_server.py  
     plugs:
       - home
       - network
