@@ -4,10 +4,11 @@ summary: Certstream-server is a server for parsing CTL's. # 79 char long summary
 description: |
   Certstream-server is a server written in python3 to aggregate, parse, and stream certificate data from multiple certificate transparency logs. It leverages concurrency to be relatively efficient and handle many clients at the same time.grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs
+grade: stable
 
 apps:
   certstream-server:
-    command: certstream-server 
+    command: $SNAP/bin/run_server.py
     plugs:
       - home
       - network
@@ -17,7 +18,8 @@ parts:
   my-part:
     source: https://github.com/kz6fittycent/certstream-server-python
     source-type: git
-    plugin: python3
+    plugin: python
+    python-version: python3
     requirements: requirements.txt
     build-packages:
       - python3
