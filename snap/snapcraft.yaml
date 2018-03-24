@@ -7,7 +7,7 @@ confinement: strict # use 'strict' once you have the right plugs
 
 apps:
   certstream-server:
-    command: run_server.py  
+    command: python3 ./run_server.py  
     plugs:
       - home
       - network
