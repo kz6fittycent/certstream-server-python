@@ -1,10 +1,14 @@
-name: certstream-server # check to see if it's available
-version: '1.4+git' # check versioning
+name: certstream-server
+adopt-info: certstream-server
 summary: Certstream-server is a server for parsing CTL's. # 79 char long summary
 description: |
   Certstream-server is a server written in python3 to aggregate, parse, and stream certificate data from multiple certificate transparency logs. It leverages concurrency to be relatively efficient and handle many clients at the same time.grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs
+
+license: MIT
+
+base: core18
 grade: stable
+confinement: strict
 
 apps:
   certstream-server:
@@ -15,12 +19,17 @@ apps:
       - network-bind
      
 parts: 
-  my-part:
-    source: https://github.com/kz6fittycent/certstream-server-python
+  certstream-server:
+    source: https://github.com/CaliDog/certstream-server-python
     source-type: git
     plugin: python
     python-version: python3
     requirements: requirements.txt
+    
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
+      
     build-packages:
       - python3
       
