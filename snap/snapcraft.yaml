@@ -24,7 +24,6 @@ parts:
     source-type: git
     plugin: python
     python-version: python3
-    requirements: requirements.txt
     
     override-pull: |
       snapcraftctl pull
